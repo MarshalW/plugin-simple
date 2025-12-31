@@ -1,0 +1,43 @@
+networks:
+  nocobase_simple_app:
+    driver: bridge
+
+services:
+  app:
+    image: docker-registry/simple-app:1.0.0
+    restart: always
+    networks:
+      - nocobase_simple_app
+    environment:
+      - APP_KEY=your-secret-key
+      - DB_DIALECT=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=nocobase
+      - DB_USER=nocobase
+      - DB_PASSWORD=nocobase
+      - TZ=Asia/Shanghai
+      - APPEND_PRESET_BUILT_IN_PLUGINS=@marshal/plugin-simple-service
+    ports:
+      - '13000:80'
+    volumes:
+      - simple_app_uploads:/app/nocobase/storage/uploads
+    depends_on:
+      - postgres
+
+  postgres:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    restart: always
+    command: postgres -c wal_level=logical
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_DB: nocobase
+      POSTGRES_PASSWORD: nocobase
+    volumes:
+      - postgres_stoarge:/var/lib/postgresql/data
+    networks:
+      - nocobase_simple_app
+
+volumes:
+  simple_app_uploads:
+  postgres_stoarge:
