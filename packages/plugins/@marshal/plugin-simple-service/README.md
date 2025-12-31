@@ -1,0 +1,1 @@
+# @marshal/plugin-simple-service

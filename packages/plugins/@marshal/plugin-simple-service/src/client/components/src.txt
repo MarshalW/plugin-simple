@@ -1,0 +1,87 @@
+===== ./simple/index.tsx =====
+import { Application } from "@nocobase/client";
+import React from "react";
+import { settings } from "./nocobase/settings";
+import { initializerItems } from "./nocobase/initializer";
+
+export const initSimpleBlock = function (app: Application) {
+    app.addComponents({ SimpleBlock });
+    app.schemaSettingsManager.add(settings);
+    initializerItems.forEach(itemParams => {
+        app.schemaInitializerManager.addItem(...itemParams);
+    })
+}
+
+const SimpleBlock = () => {
+    return (
+        <div>Simple block</div>
+    )
+}
+
+===== ./simple/nocobase/settings.tsx =====
+import { SchemaSettings } from "@nocobase/client";
+import { BlockNameLowercase } from "./constant";
+
+export const settings = new SchemaSettings({
+    name: `blockSettings:${BlockNameLowercase}`,
+    items: [
+        {
+            type: 'remove',
+            name: 'remove',
+            componentProps: {
+                removeParentsIfNoChildren: true,
+                breakRemoveOn: { 'x-component': 'Grid' }
+            }
+        }
+    ]
+})
+
+===== ./simple/nocobase/constant.ts =====
+export const BlockName = 'SimpleBlock';
+export const BlockNameLowercase = BlockName.toLowerCase();
+
+===== ./simple/nocobase/initializer.tsx =====
+import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
+import { useT } from "../../../locale";
+import { BlockName, BlockNameLowercase } from "./constant";
+import { schema } from "./schema";
+
+export const initializerItems: [[string, string, SchemaInitializerItemType]] = [
+    [
+        "page:addBlock",
+        `otherBlocks.${BlockNameLowercase}`,
+        {
+            type: 'item',
+            name: BlockNameLowercase,
+            icon: 'MessageOutlined',
+            useComponentProps() {
+                const t = useT()
+
+                const { insert } = useSchemaInitializer();
+                return {
+                    title: t(BlockName),
+                    onClick: () => {
+                        insert(schema);
+                    },
+                };
+            }
+        }
+    ],
+]
+
+===== ./simple/nocobase/schema.ts =====
+import { ISchema } from "@nocobase/client";
+import { settings } from "./settings";
+import { BlockName } from "./constant";
+
+export const schema: ISchema = {
+    type: 'void',
+    'x-decorator': 'BlockItem',
+    'x-settings': settings.name,
+    "x-component": BlockName,
+    "x-component-props": {
+        "heightMode": "fullHeight",
+        "height": null,
+    },
+}
+

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@@/*": [
+        ".dumi/tmp/*"
+      ],
+      "@marshal/plugin-simple-service/client": [
+        "packages/plugins/@marshal/plugin-simple-service/src/client"
+      ],
+      "@marshal/plugin-simple-service/package.json": [
+        "packages/plugins/@marshal/plugin-simple-service/package.json"
+      ],
+      "@marshal/plugin-simple-service": [
+        "packages/plugins/@marshal/plugin-simple-service/src"
+      ]
+    }
+  }
+}
