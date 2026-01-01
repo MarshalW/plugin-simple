@@ -4,7 +4,7 @@ networks:
 
 services:
   app:
-    image: docker-registry/simple-app:1.0.0
+    image: docker-registry:5000/simple-app:1.0.0
     restart: always
     networks:
       - nocobase_simple_app
