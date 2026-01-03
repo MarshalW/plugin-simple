@@ -11,7 +11,8 @@ RUN echo "registry=${NPM_REGISTRY}" > .npmrc \
   && echo "strict-ssl=false" >> .npmrc
 
 # 3. 安装你的私有插件
-RUN yarn add @marshal/plugin-simple-service
+ARG APP_VERSION
+RUN yarn add @marshal/plugin-simple-service@${APP_VERSION}
 
 # 使用自定义的启动脚本
 COPY ./scripts/start.sh /app/docker-entrypoint.sh

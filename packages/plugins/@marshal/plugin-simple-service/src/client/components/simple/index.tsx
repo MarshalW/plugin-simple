@@ -13,6 +13,6 @@ export const initSimpleBlock = function (app: Application) {
 
 const SimpleBlock = () => {
     return (
-        <div>Simple block ✅</div>
+        <div>Simple block ✅✅</div>
     )
 }
