@@ -22,3 +22,4 @@ dist/
 /storage/.app-dev
 
 storage
+packages/plugins/@marshal/plugin-simple-service/src/server/install/data.sql

@@ -14,6 +14,8 @@ RUN echo "registry=${NPM_REGISTRY}" > .npmrc \
 ARG APP_VERSION
 RUN yarn add @marshal/plugin-simple-service@${APP_VERSION}
 
+RUN yarn add @marshal/plugin-snapshot
+
 # 使用自定义的启动脚本
 COPY ./scripts/start.sh /app/docker-entrypoint.sh
 RUN chmod +x /app/docker-entrypoint.sh
