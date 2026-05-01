@@ -1,4 +1,5 @@
 import { Plugin } from '@nocobase/server';
+import install from './install';
 
 export class PluginSimpleServiceServer extends Plugin {
   async afterAdd() {}
@@ -7,7 +8,9 @@ export class PluginSimpleServiceServer extends Plugin {
 
   async load() {}
 
-  async install() {}
+  async install() {
+    await install(this.app)
+  }
 
   async afterEnable() {}
 

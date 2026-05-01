@@ -3868,10 +3868,10 @@
     hoist-non-react-statics "^3.3.1"
     react-is "^16.12.0"
 
-"@marshal/plugin-snapshot@0.1.4":
-  version "0.1.4"
-  resolved "http://verdaccio/@marshal/plugin-snapshot/-/plugin-snapshot-0.1.4.tgz#e678d536381b5e48797f69cf049825dde6e25902"
-  integrity sha512-7oDr3raSMu9Du0vPpjEQutc5f4paToehhF68IxkC3/YNnWUIORqbMqcAQsaaVxyrinfwfzqSISpeFeppyimeoA==
+"@marshal/plugin-snapshot@^0.1.5":
+  version "0.1.5"
+  resolved "http://verdaccio/@marshal/plugin-snapshot/-/plugin-snapshot-0.1.5.tgz#a799cc77a285207724b7e7465eff07b363fb03fb"
+  integrity sha512-iPG8D/oL/hKTwR0yDA/RS/xDpTWnZsMlr4PbVVBPWGJ+rlPfQEk0So8yhQej4onsSgDuOO5i8WBch9/rZv/MKw==
 
 "@module-federation/error-codes@0.11.2":
   version "0.11.2"
